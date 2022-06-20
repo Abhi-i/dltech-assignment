@@ -42,14 +42,14 @@ function findLatestStories(html){
 function extractStory(chunk) {
     let startIndex = chunk.indexOf(`href="`)
     let endIndex = chunk.indexOf(`">`, startIndex + 6);
-    let url = "http://time.com" + chunk.substring(startIndex + 6, endIndex)
+    let link = "https://time.com" + chunk.substring(startIndex + 6, endIndex)
     startIndex = chunk.indexOf(`item-headline">`)
     endIndex = chunk.indexOf(`</h3>`, startIndex + 15)
     let title = chunk.substring(startIndex + 15, endIndex)
     startIndex = chunk.indexOf(`item-timestamp">`)
     endIndex = chunk.indexOf(`</time>`, startIndex + 16)
     let time = chunk.substring(startIndex + 16 + 17, endIndex-15)
-return {title, url/*, time*/};
+return {title, link/*, time*/};
 }
 
 module.exports = getStories;
