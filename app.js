@@ -16,6 +16,7 @@ server.on("request", async function (req, res) {
                     let getStories = require("./story");
                     let stories = await getStories();
                     res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
                     res.end(JSON.stringify(stories));
                     break;
                 } catch (e) {
